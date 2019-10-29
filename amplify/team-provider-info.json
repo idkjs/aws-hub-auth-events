@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "customauthentication-dev-20191026164439-authRole",
+            "UnauthRoleArn": "arn:aws:iam::073051392232:role/customauthentication-dev-20191026164439-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::073051392232:role/customauthentication-dev-20191026164439-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "customauthentication-dev-20191026164439-deployment",
+            "UnauthRoleName": "customauthentication-dev-20191026164439-unauthRole",
+            "StackName": "customauthentication-dev-20191026164439",
+            "StackId": "arn:aws:cloudformation:eu-west-1:073051392232:stack/customauthentication-dev-20191026164439/6ea39110-f831-11e9-8591-0a62311bc72a"
+        },
+        "categories": {
+            "auth": {
+                "customauthentication77ca6460": {}
+            }
+        }
+    }
+}
