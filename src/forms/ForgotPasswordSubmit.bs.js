@@ -2,10 +2,9 @@
 
 import * as React from "react";
 import * as FormStyle from "../pages/FormStyle.bs.js";
-import * as FormTypes from "../hooks/FormTypes.bs.js";
 
 function ForgotPasswordSubmit(Props) {
-  var formType = Props.formType;
+  Props.formType;
   var onClick = Props.onClick;
   var onChange = Props.onChange;
   return React.createElement("div", {
@@ -31,7 +30,7 @@ function ForgotPasswordSubmit(Props) {
                 }), React.createElement("button", {
                   className: FormStyle.Styles.button,
                   onClick: onClick
-                }, FormTypes.formTypeToString(formType)));
+                }, "Save new password"));
 }
 
 var make = ForgotPasswordSubmit;

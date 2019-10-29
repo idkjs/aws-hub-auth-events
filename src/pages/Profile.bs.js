@@ -6,7 +6,6 @@ import * as Form from "./Form.bs.js";
 import * as Block from "bs-platform/lib/es6/block.js";
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
-import * as Amplify from "../aws/Amplify.bs.js";
 import * as Container from "../components/Container.bs.js";
 import * as FormTypes from "../hooks/FormTypes.bs.js";
 import * as AwsAmplify from "aws-amplify";
@@ -27,7 +26,7 @@ function Profile(Props) {
   var setUser = match[1];
   var user = match[0];
   var checkUser = function (param) {
-    Auth.currentUserPoolUser(Amplify.Config.userPoolId).then((function (data) {
+    Auth.currentUserPoolUser("Amplify.Config.identityPoolId").then((function (data) {
               var userInfo = FormTypes.fromJs(data);
               console.log("userInfo: ", userInfo);
               Curry._1(setUser, (function (param) {
@@ -73,8 +72,8 @@ function Profile(Props) {
                 children: null
               }, React.createElement("h1", undefined, "Profile"), React.createElement("h2", undefined, "Username: " + user$1[/* username */0]), React.createElement("h3", undefined, "Email: " + user$1[/* attributes */1][/* email */2]), (match$1 == null) ? null : React.createElement("h4", undefined, "Phone: " + match$1), React.createElement("button", {
                     onClick: (function (param) {
-                        AwsAmplify.Auth.signOut().then((function (data) {
-                                  console.log("signed Out: ", data);
+                        AwsAmplify.Auth.signOut().then((function (param) {
+                                  console.log("signed Out");
                                   return Promise.resolve(/* () */0);
                                 })).catch((function (error) {
                                 console.log("error", error);

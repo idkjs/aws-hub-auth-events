@@ -36,8 +36,8 @@ let make = () => {
   // };
 
   let checkUser = () => {
-    // Auth.currentUserPoolUser(~userPoolId="Amplify.Config.identityPoolId")
-    Auth.currentUserPoolUser(~userPoolId=Amplify.Config.userPoolId)
+    Auth.currentUserPoolUser(~userPoolId="Amplify.Config.identityPoolId")
+    // Auth.currentUserPoolUser(~userPoolId=Amplify.Config.userPoolId)
     |> Js.Promise.then_(data => {
          let userInfo = data->FormTypes.fromJs;
          Js.log2("userInfo: ", userInfo);
@@ -61,19 +61,6 @@ let make = () => {
     |> ignore;
   };
 
-  let signOut = () => {
-    Auth.signOut()
-    |> Js.Promise.then_(data => {
-         Js.log2("signed Out: ", data);
-
-         Js.Promise.resolve();
-       })
-    |> Js.Promise.catch(error => {
-         Js.log2("error", error);
-         Js.Promise.resolve();
-       })
-    |> ignore;
-  };
   let logger = str => Js.log2("logger", str);
 
   let listener: Hub.cb =
@@ -99,6 +86,19 @@ let make = () => {
     },
     [||],
   );
+
+  let signOut = () => {
+    Auth.signOut()
+    |> Js.Promise.then_(_ => {
+         Js.log("signed Out");
+         Js.Promise.resolve();
+       })
+    |> Js.Promise.catch(error => {
+         Js.log2("error", error);
+         Js.Promise.resolve();
+       })
+    |> ignore;
+  };
   let formType: FormTypes.formType = SignIn;
   let renderProfile = () =>
     switch (user) {

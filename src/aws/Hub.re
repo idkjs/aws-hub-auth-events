@@ -1,5 +1,9 @@
 type hub;
 [@bs.module "@aws-amplify/core"] external hub: hub = "Hub";
+type logger;
+[@bs.new] [@bs.module "@aws-amplify/core"] external logger: logger = "Logger";
+[@bs.send] external info: unit => logger = "info";
+[@bs.send] external error: unit => logger = "error";
 
 // type logger;
 // [@bs.module "@aws-amplify/core"] [@bs.new]
@@ -7,26 +11,20 @@ type hub;
 // [@bs.send] external error: (string) =>logger = "error";
 /*    | "signOut" => setUser(_ => None)
 
-    | "signIn_failure" => logger("user sign in failed") |> ignore
+      | "signIn_failure" => logger("user sign in failed") |> ignore
 
-    | "configured" */
-type event = [@bs.string] [
-      | `signIn
-      | `signUp
-      | `signOut
-      | `signIn_failure
-      | `configured
-    ];
-type channel = [@bs.string] [
-      | `core
-      | `auth
-      | `api
-      | `analytics
-      | `interactions
-      | `pubsub
-      | `storage
-      | `xr
-    ];
+      | "configured" */
+type event = [ | `signIn | `signUp | `signOut | `signIn_failure | `configured];
+type channel = [
+  | `core
+  | `auth
+  | `api
+  | `analytics
+  | `interactions
+  | `pubsub
+  | `storage
+  | `xr
+];
 module HubPayload = {
   [@bs.deriving abstract]
   type t('a) = {

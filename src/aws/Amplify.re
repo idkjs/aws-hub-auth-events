@@ -49,5 +49,5 @@ module Config = {
 // };
 type t;
 [@bs.module "aws-amplify"] external amplify: t = "default";
-[@bs.send] external configure: (t, Js.t({..})) => unit = "configure";
+[@bs.send] external configure: (t, Config.t) => unit = "configure";
 let configure = (config: Config.t) => configure(amplify, config);

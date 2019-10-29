@@ -24,7 +24,7 @@ type payload = {
   /** UNIX time */
   auth_time: int,
   iss: string,
-  //  cognito_username: string,
+  [@bs.as "cognito:username"]
   cognito_username: string,
   /** UNIX time */
   exp: int,

@@ -24,6 +24,6 @@ let make = (~formType: FormTypes.formType, ~onClick, ~onChange) =>
       placeholder="New password"
     />
     <button onClick className=Styles.button>
-      {formType->FormTypes.formTypeToString |> React.string}
+      {"Save new password" |> React.string}
     </button>
   </div>;
